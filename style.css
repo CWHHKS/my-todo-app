@@ -1,13 +1,13 @@
 :root {
-    --bg-color: #000000;
-    --card-bg: rgba(30, 30, 32, 0.75);
-    --text-main: #ffffff;
-    --text-muted: #8e8e93;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --primary: #0a84ff; /* Apple Blue Dark */
-    --primary-hover: #007aff;
-    --danger: #ff453a; /* Apple Red Dark */
-    --success: #32d74b; /* Apple Green Dark */
+    --bg-color: #f0f9ff; /* Light Sky Blue */
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --primary: #0ea5e9; /* Sky Blue Main */
+    --primary-hover: #0284c7;
+    --danger: #ef4444; 
+    --success: #22c55e;
     --glass-blur: blur(24px);
     --transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -23,8 +23,8 @@
 body {
     font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--bg-color);
-    background-image: radial-gradient(circle at 15% 50%, rgba(10, 132, 255, 0.15), transparent 25%),
-                      radial-gradient(circle at 85% 30%, rgba(94, 92, 230, 0.15), transparent 25%);
+    background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.2), transparent 30%),
+                      radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.2), transparent 30%);
     color: var(--text-main);
     min-height: 100vh;
     display: flex;
@@ -40,7 +40,7 @@ body {
     max-width: 440px;
     border-radius: 28px;
     padding: 36px 32px;
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
     border: 1px solid var(--border-color);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
@@ -78,7 +78,7 @@ h1 {
 
 #todo-input {
     flex: 1;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.03);
     border: 1px solid transparent;
     padding: 16px 56px 16px 20px;
     border-radius: 20px;
@@ -87,18 +87,18 @@ h1 {
     font-weight: 400;
     transition: all 0.3s ease;
     font-family: inherit;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
 }
 
 #todo-input:focus {
     outline: none;
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.2), inset 0 2px 4px rgba(0,0,0,0.2);
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(14, 165, 233, 0.3);
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15), inset 0 1px 3px rgba(0,0,0,0.05);
 }
 
 #todo-input::placeholder {
-    color: #636366;
+    color: #94a3b8;
 }
 
 #add-btn {
@@ -144,10 +144,10 @@ h1 {
 
 .progress-bar {
     height: 8px;
-    background: rgba(255,255,255,0.06);
+    background: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .progress-fill {
@@ -168,18 +168,18 @@ h1 {
 .todo-item {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.5);
     padding: 16px 20px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
     transition: all var(--transition);
     animation: slideIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .todo-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.9);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 @keyframes slideIn {
@@ -188,9 +188,9 @@ h1 {
 }
 
 .todo-item.completed {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(0, 0, 0, 0.02);
     border-color: transparent;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 .todo-item.completed .todo-text {
@@ -220,7 +220,7 @@ h1 {
 .todo-item.completed .checkbox {
     background: var(--success);
     border-color: var(--success);
-    box-shadow: 0 0 12px rgba(50, 215, 75, 0.4);
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
 }
 
 .checkbox svg {
@@ -248,7 +248,7 @@ h1 {
 }
 
 .delete-btn {
-    background: rgba(255,255,255,0.05);
+    background: rgba(0, 0, 0, 0.04);
     border: none;
     color: var(--text-muted);
     cursor: pointer;
@@ -292,8 +292,8 @@ h1 {
 .empty-icon {
     font-size: 56px;
     margin-bottom: 16px;
-    opacity: 0.8;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+    opacity: 0.5;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
 .empty-state p {
