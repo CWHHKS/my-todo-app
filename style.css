@@ -1,0 +1,303 @@
+:root {
+    --bg-color: #000000;
+    --card-bg: rgba(30, 30, 32, 0.75);
+    --text-main: #ffffff;
+    --text-muted: #8e8e93;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --primary: #0a84ff; /* Apple Blue Dark */
+    --primary-hover: #007aff;
+    --danger: #ff453a; /* Apple Red Dark */
+    --success: #32d74b; /* Apple Green Dark */
+    --glass-blur: blur(24px);
+    --transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at 15% 50%, rgba(10, 132, 255, 0.15), transparent 25%),
+                      radial-gradient(circle at 85% 30%, rgba(94, 92, 230, 0.15), transparent 25%);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.app-container {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 440px;
+    border-radius: 28px;
+    padding: 36px 32px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--border-color);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.app-container:hover {
+    transform: translateY(-4px) scale(1.005);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    margin-bottom: 28px;
+}
+
+#todo-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid transparent;
+    padding: 16px 56px 16px 20px;
+    border-radius: 20px;
+    color: var(--text-main);
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#todo-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.2), inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#todo-input::placeholder {
+    color: #636366;
+}
+
+#add-btn {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 44px;
+    background: var(--primary);
+    border: none;
+    border-radius: 16px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s cubic-bezier(0.25, 1.5, 0.5, 1), background-color 0.2s;
+    box-shadow: 0 4px 12px rgba(10, 132, 255, 0.3);
+}
+
+#add-btn:hover {
+    background: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+#add-btn:active {
+    transform: scale(0.92);
+}
+
+.stats {
+    margin-bottom: 24px;
+}
+
+#progress-text {
+    display: block;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-align: right;
+    transition: color 0.3s;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1), background 0.4s;
+}
+
+#todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 16px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all var(--transition);
+    animation: slideIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.todo-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(15px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.todo-item.completed {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: transparent;
+    opacity: 0.5;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.checkbox {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    margin-right: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.checkbox:hover {
+    border-color: var(--text-muted);
+}
+
+.todo-item.completed .checkbox {
+    background: var(--success);
+    border-color: var(--success);
+    box-shadow: 0 0 12px rgba(50, 215, 75, 0.4);
+}
+
+.checkbox svg {
+    width: 14px;
+    height: 14px;
+    color: white;
+    opacity: 0;
+    transform: scale(0.5) rotate(-45deg);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.todo-item.completed .checkbox svg {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.todo-text {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 400;
+    word-break: break-word;
+    transition: color 0.3s;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.delete-btn {
+    background: rgba(255,255,255,0.05);
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 12px;
+    margin-left: 12px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+.todo-item:hover .delete-btn {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.delete-btn:hover {
+    color: white;
+    background: var(--danger);
+    box-shadow: 0 4px 12px rgba(255, 69, 58, 0.4);
+}
+
+.delete-btn:active {
+    transform: scale(0.9);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 48px 0;
+    color: var(--text-muted);
+    transition: opacity 0.4s;
+}
+
+.empty-state.hidden {
+    display: none;
+}
+
+.empty-icon {
+    font-size: 56px;
+    margin-bottom: 16px;
+    opacity: 0.8;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+
+.empty-state p {
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+}
